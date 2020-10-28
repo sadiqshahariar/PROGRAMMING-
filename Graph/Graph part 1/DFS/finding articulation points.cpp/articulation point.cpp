@@ -35,7 +35,7 @@ void dfs(int node,int par)
 		else{
 			dfs(child,node);
 			low[node]=min(low[node],low[child]);
-			if(low[child]>in[node]&&par!=-1)
+			if(low[child]>=in[node]&&par!=-1)
 			{
 				//cout<<node<<" -> "<<child<<"  is a bridge"<<nl;
 				s.insert(node);
