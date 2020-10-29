@@ -20,6 +20,7 @@ int in[101],low[101],vis[101];
 vector<int>v[101];
 set<int>s;
 int timer;
+int xx=0;
 void dfs(int node,int par)
 {
 	vis[node]=1;
@@ -33,6 +34,7 @@ void dfs(int node,int par)
 			low[node]=min(low[node],in[child]);
 		}
 		else{
+			if(node==1)xx++;
 			dfs(child,node);
 			low[node]=min(low[node],low[child]);
 			if(low[child]>=in[node]&&par!=-1)
@@ -56,6 +58,7 @@ int main()
 		v[y].push_back(x);
 	}
 	dfs(1,-1);
+	if(xx>1)s.insert(1);
 	for(int a: s)
 	{
 		cout<<a<<" ";
