@@ -111,28 +111,10 @@ ll primefact(int n)
 
 int main()
 {
-    int n,ca=1;
+    int n;
     while(cin>>n)
     {
-        if(n==0)
-            break;
-
-        cout<<"Case "<<ca<<": ";
-
-        if(n==1)
-            cout<<1<<nl;
-
-        else
-        {
-            ll ans=-1;
-            for(int i=1; i<1001; i++)
-                if(primefact(i)==n)
-                    ans=i;
-
-            //cout<<primefact(n)<<nl;
-            cout<<ans<<nl;
-        }
-        ca++;
+        cout<<primefact(n)<<nl;
     }
     return 0;
 }
