@@ -17,7 +17,7 @@ using namespace __gnu_pbds;
 typedef long long int ll;
 typedef unsigned long long int  llu;
 int phi[1000001];
-int init(int mx)
+void init(int mx)
 {
 	for(int i=1;i<=mx;i++)
 	{
