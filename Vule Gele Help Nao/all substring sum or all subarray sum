@@ -1,0 +1,90 @@
+#include<bits/stdc++.h>
+using  namespace  std;
+
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+
+#define faster  ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+#define sq(x)   (x)*(x)
+#define PI      acos(-1.0)
+#define all(x) x.begin(),x.end()
+#define nl      '\n'
+ #define mod 1000000007
+typedef long long int ll;
+typedef unsigned long long int  llu;
+
+// PRIME NUMBER TEST//
+bool prime(int n)
+{
+    if(n<2)return false;
+    if(n<=3)return true;
+    if(n%2==0)return false;
+    for(int i=3;i*i<=n;i+=2)
+    {
+        if(n%i==0)return false;
+    }
+    return true;
+}
+
+// Graph Grid //
+int dx[]={-1,0,1,0};
+int dy[]={0,1,0,-1};
+
+ll power(ll a,ll b)
+{
+    ll ans = 1;
+    while(b>0)
+    {
+        if(b%2==0)
+        {
+            b/=2;
+            a = (a*a)%mod;
+        }
+        else
+        {
+            b--;
+            ans = (ans*a)%mod;
+        }
+    }
+    return ans%mod;
+}
+
+ll left(ll val,ll dig,ll pw)
+{
+    ll ans = (val*(val+1))/2;
+    ans%=mod;
+    ans = (ans*pw*dig)%mod;
+    return ans%mod;
+}
+ll right(ll dig, ll num)
+{
+    ll ans = (dig*num)%mod;
+    return ans%mod;
+}
+
+int main()
+{
+    string s;
+    cin>>s;
+    ll ans = 0;
+    ll lf,rt;
+    ll c = 1;
+    ll a = 0;
+    ll n = s.size();
+    for(ll i=s.size();i>0;i--)
+    {
+        ll dig = s[i-1]-'0';
+         lf = left(i-1,dig,c);
+         rt = right(dig,a);
+
+         ans+=(lf + rt)%mod;
+         ans%mod;
+         c = (c*10)%mod;
+         a = (a + (power(10,n-i)*((n-i)+1))%mod)%mod;
+    }
+    cout<<ans%mod<<endl;
+}
