@@ -38,3 +38,22 @@
              
 13. question:-> count of max 1 in a to b bit manupulation
             solution:-> https://www.codechef.com/BITB2021/submit/BITPOS
+            
+            
+14.  question : String niye kaj:
+        solution: 
+            string s;
+        getline(cin,s);
+ 
+        istringstream iss(s);
+        string word,c;
+ 
+ 
+        map<string,int>mp;
+        int cnt=0;
+        while(iss>>word)
+        {
+            c=word.c_str();
+            mp[c]++;
+            cnt++;
+        }
